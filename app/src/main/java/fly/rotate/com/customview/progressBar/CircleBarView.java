@@ -8,6 +8,7 @@ import android.graphics.RectF;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +18,8 @@ public class CircleBarView extends View {
 
     private Paint rPaint;//绘制矩形的画笔
     private Paint progressPaint;//绘制圆弧的画笔
+    private Paint defaultProgressPaint;//绘制圆弧的画笔
+    private Paint textPaint;//绘制圆弧的画笔
 
     private float sweepAngle;//圆弧经过的角度
 
@@ -52,6 +55,16 @@ public class CircleBarView extends View {
         progressPaint.setStrokeWidth(20);
         progressPaint.setAntiAlias(true);//设置抗锯齿
 
+        defaultProgressPaint = new Paint();
+        defaultProgressPaint.setStyle(Paint.Style.STROKE);//只描边，不填充
+        defaultProgressPaint.setColor(Color.RED);
+        defaultProgressPaint.setStrokeWidth(20);
+        defaultProgressPaint.setAntiAlias(true);//设置抗锯齿
+
+        textPaint = new TextPaint();
+        textPaint.setColor(Color.BLACK);
+        textPaint.setTextSize(30);
+
         anim = new CircleBarAnim();
 
     }
@@ -64,8 +77,16 @@ public class CircleBarView extends View {
         RectF rectF = new RectF(x, y, x + 300, y + 300);//建一个大小为300 * 300的正方形区域
 
 //        canvas.drawArc(rectF,0,270,false,progressPaint);//这里角度0对应的是三点钟方向，顺时针方向递增
+//        if (sweepAngle == 0) {
         canvas.drawRect(rectF, rPaint);
+        canvas.drawArc(rectF, 0, 360, false, defaultProgressPaint);
+//            canvas.save();
+//        }
         canvas.drawArc(rectF, 0, sweepAngle, false, progressPaint);
+        canvas.drawText((int) (sweepAngle / 360 * 100) + "", 200, 200, textPaint);
+//        if (sweepAngle == 0) {
+
+//        }
     }
 
     public class CircleBarAnim extends Animation {
