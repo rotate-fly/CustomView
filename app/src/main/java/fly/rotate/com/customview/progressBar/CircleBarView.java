@@ -79,6 +79,7 @@ public class CircleBarView extends View {
 //        canvas.drawArc(rectF,0,270,false,progressPaint);//这里角度0对应的是三点钟方向，顺时针方向递增
 //        if (sweepAngle == 0) {
         canvas.drawRect(rectF, rPaint);
+
         canvas.drawArc(rectF, 0, 360, false, defaultProgressPaint);
 //            canvas.save();
 //        }

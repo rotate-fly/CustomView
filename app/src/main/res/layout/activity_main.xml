@@ -3,14 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
     <fly.rotate.com.customview.progressBar.CircleBarView
         android:id="@+id/circle_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
+
+    <fly.rotate.com.customview.fivestar.SimpleFivePointedStar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80" />
 </LinearLayout>
