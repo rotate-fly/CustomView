@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
@@ -36,6 +37,11 @@ public class CircleBarView extends View {
     public CircleBarView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context, attrs);
+    }
+
+    @Override
+    public ViewPropertyAnimator animate() {
+        return super.animate();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -72,22 +78,14 @@ public class CircleBarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float x = 50;
-        float y = 50;
+        float x = 0;
+        float y = 0;
         RectF rectF = new RectF(x, y, x + 300, y + 300);//建一个大小为300 * 300的正方形区域
-
-//        canvas.drawArc(rectF,0,270,false,progressPaint);//这里角度0对应的是三点钟方向，顺时针方向递增
-//        if (sweepAngle == 0) {
+        RectF rectF1 = new RectF(x+25, y+25, x + 275, y + 275);//建一个大小为300 * 300的正方形区域
         canvas.drawRect(rectF, rPaint);
-
-        canvas.drawArc(rectF, 0, 360, false, defaultProgressPaint);
-//            canvas.save();
-//        }
-        canvas.drawArc(rectF, 0, sweepAngle, false, progressPaint);
-        canvas.drawText((int) (sweepAngle / 360 * 100) + "", 200, 200, textPaint);
-//        if (sweepAngle == 0) {
-
-//        }
+        canvas.drawArc(rectF1, 0, 360, false, defaultProgressPaint);
+        canvas.drawArc(rectF1, 0, sweepAngle, false, progressPaint);
+        canvas.drawText((int) (sweepAngle / 360 * 100) + "", 150, 150, textPaint);
     }
 
     public class CircleBarAnim extends Animation {

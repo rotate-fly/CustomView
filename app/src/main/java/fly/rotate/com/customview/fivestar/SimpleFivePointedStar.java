@@ -43,20 +43,13 @@ public class SimpleFivePointedStar extends View {
         float angle = 360/5;
         Paint mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.YELLOW);
-//        mPaint.setStyle(Paint.Style.STROKE);
-//        mPaint.setStrokeWidth(5);
-
+        mPaint.setColor(Color.RED);
         Path mPath = new Path();
         mPath.moveTo(radius,0);
         mPath.lineTo(radius+(float) Math.cos((angle*2-90)*Math.PI / 180)*radius,radius+(float)Math.sin((angle*2-90)*Math.PI / 180)*radius);
         mPath.lineTo( radius-(float)Math.sin(angle*Math.PI / 180)*radius,radius-(float)Math.cos(angle*Math.PI / 180)*radius);
         mPath.lineTo( radius+(float)Math.sin(angle*Math.PI / 180)*radius,radius-(float)Math.cos(angle*Math.PI / 180)*radius);
         mPath.lineTo( radius-(float)Math.sin((angle*3-180)*Math.PI / 180)*radius,radius+(float)Math.cos((angle*3-180)*Math.PI / 180)*radius);
-//       float Y = 50+((radius+(float) Math.cos((angle*2-90)*Math.PI / 180)*radius+radius-(float)Math.sin(angle*Math.PI / 180)*radius)
-//                -(radius+(float)Math.sin(angle*Math.PI / 180)*radius+radius-(float)Math.sin((angle*3-180)*Math.PI / 180)*radius));
-//        float X= 50-((radius+(float)Math.sin((angle*2-90)*Math.PI / 180)*radius+radius-(float)Math.cos(angle*Math.PI / 180)*radius)
-//                -(radius-(float)Math.cos(angle*Math.PI / 180)*radius+radius+(float)Math.cos((angle*3-180)*Math.PI / 180)*radius));
         mPath.close();
         canvas.drawPath(mPath,mPaint);
     }
