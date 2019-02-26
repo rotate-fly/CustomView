@@ -96,7 +96,12 @@ public class SimpleFivePointedStar extends View {
 //        canvas.save();
 ////        canvas.translate(mWidth / 2, mHeight / 2);
         /**
+         * PathMeasure类中
+         * public boolean getSegment(float startD, float stopD, Path dst, boolean startWithMoveTo)
+         * 该方法用于截取整个Path中的某个片段，通过startD和stopD来控制截取的长度，并将截取后的Path添加到参数dst中
          * 此处destPath需要重置，因为getSegment方法中的dst参数中保存的Path是不断添加的
+         * getSegment方法的startWithMoveTo参数，为true时，被截取出来的Path片段保持原状
+         *                                      为false时，则会将截取出来的Path片段的起始点移动到dst的最后一个点（画线是的点坐标）
          * */
         destPath.reset();
 //        destPath.lineTo(0, 0);   // destPath
