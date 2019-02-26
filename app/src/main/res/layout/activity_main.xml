@@ -17,6 +17,7 @@
 
 
     <fly.rotate.com.customview.fivestar.SimpleFivePointedStar
+        android:id="@+id/simpleFivePointedStar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="@color/colorPrimary" />
