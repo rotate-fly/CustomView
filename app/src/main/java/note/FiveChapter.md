@@ -38,8 +38,9 @@ public PathMeasure(Path path, boolean forceClosed) {
 
          该方法用于截取整个Path中的某个片段，通过startD和stopD来控制截取的长度，并将截取后的Path添加到参数dst中
          此处destPath需要重置，因为getSegment方法中的dst参数中保存的Path是不断添加的
-         getSegment方法的startWithMoveTo参数，为true时，被截取出来的Path片段保持原状
-                                              为false时，则会将截取出来的Path片段的起始点移动到dst的最后一个点（画线是的点坐标）
+         getSegment方法的startWithMoveTo参数：
+                               为true时，被截取出来的Path片段保持原状
+                               为false时，则会将截取出来的Path片段的起始点移动到dst的最后一个点（画线的点坐标）
 * public boolean nextContour():移动到路径中的下一个轮廓。如果存在，返回true 如果路径结束，则为false
 * public boolean getPosTan(float distance, float pos[], float tan[])：
 
