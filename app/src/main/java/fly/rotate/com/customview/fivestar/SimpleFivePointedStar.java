@@ -2,14 +2,18 @@ package fly.rotate.com.customview.fivestar;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.text.style.TypefaceSpan;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
+import fly.rotate.com.customview.R;
 
 /**
  * Created by hzs on 2019/2/18.
@@ -29,18 +33,26 @@ public class SimpleFivePointedStar extends View {
     private ValueAnimator mValueAnimator;
     private float animatorValue;
 
+    private int paintType = 0;
+
     public SimpleFivePointedStar(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public SimpleFivePointedStar(Context context, AttributeSet attrs) {
-        super(context, attrs);
+        this(context, attrs, 0);
         this.context = context;
     }
 
     public SimpleFivePointedStar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.context = context;
+        //关闭硬件加速，如果不关闭硬件加速，使用getSegment()函数无效，使用getSegment()函数进行的路径动画无效
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SimpleFivePointedStar);
+        paintType = typedArray.getInt(R.styleable.SimpleFivePointedStar_paint_style, 0);
+
+        typedArray.recycle();
     }
 
     @Override
@@ -55,8 +67,18 @@ public class SimpleFivePointedStar extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.RED);
-        mPaint.setStrokeWidth(4);
-        mPaint.setStyle(Paint.Style.STROKE);
+        if (paintType == 0) {
+            mPaint.setStrokeWidth(4);
+            mPaint.setStyle(Paint.Style.FILL);
+        }
+        if (paintType == 1) {
+            mPaint.setStrokeWidth(4);
+            mPaint.setStyle(Paint.Style.STROKE);
+        }
+        if (paintType == 2) {
+            mPaint.setStrokeWidth(4);
+            mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        }
 
         mDefaultPaint = new Paint();
         mDefaultPaint.setAntiAlias(true);
@@ -64,8 +86,18 @@ public class SimpleFivePointedStar extends View {
         /**
          * 画出来的五角星默认闭合区域是有填充颜色的，当将画笔加上下面两个属性，则没有填充颜色，只画线
          * */
-        mDefaultPaint.setStrokeWidth(4);
-        mDefaultPaint.setStyle(Paint.Style.STROKE);
+        if (paintType == 0) {
+            mDefaultPaint.setStrokeWidth(4);
+            mDefaultPaint.setStyle(Paint.Style.FILL);
+        }
+        if (paintType == 1) {
+            mDefaultPaint.setStrokeWidth(4);
+            mDefaultPaint.setStyle(Paint.Style.STROKE);
+        }
+        if (paintType == 2) {
+            mDefaultPaint.setStrokeWidth(4);
+            mDefaultPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        }
 
         pathMeasure = new PathMeasure();
 
@@ -126,8 +158,8 @@ public class SimpleFivePointedStar extends View {
 
     }
 
-    public void startAnimator(){
-        if(mValueAnimator!=null){
+    public void startAnimator() {
+        if (mValueAnimator != null) {
             mValueAnimator.start();
         }
     }

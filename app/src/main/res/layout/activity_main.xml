@@ -25,9 +25,21 @@
     <Button
         android:id="@+id/btn1"
         android:layout_width="@dimen/dp_180"
-        android:layout_height="@dimen/dp_80"
+        android:layout_height="@dimen/dp_40"
         android:ellipsize="marquee"
         android:singleLine="true"
         android:text="动画实例一"
         android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/txt_path_measure"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_40"
+        android:textSize="@dimen/sp_16"
+        android:gravity="center"
+        android:layout_margin="@dimen/dp_3"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/bg_textview"
+        android:text="PathMeasure示例"/>
+
 </LinearLayout>

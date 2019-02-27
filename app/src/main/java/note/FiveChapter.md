@@ -1,7 +1,9 @@
 # Android自定义控件开发入门和实战
 ### 第五章动画进阶
 ###### 1、PathMeasure类的使用
-[实例](../fly/rotate/com/customview/fivestar/SimpleFivePointedStar.java)
+[实例](../fly/rotate/com/animator/AnimatorPathMeasureExample.java)
+
+![示例Gif图片](../../../../images/AnimatorPathMeasureExample01.gif)
 
  PathMeasure：创建与指定路径对象关联的路径度量对象(已创建并指定)。度量对象现在可以返回路径的长度，以及任意位置的位置和切线路径。
 ```
@@ -26,6 +28,8 @@ public PathMeasure(Path path, boolean forceClosed) {
 
 > 注意事项
 > ***在OnDraw()函数中创建变量是非常不明智的行为，因为onDraw()函数会被在每次重绘刷新界面时调用***
+>  使用getSegment()需要关闭硬件加速，如果不关闭硬件加速，使用getSegment()函数无效，使用getSegment()函数进行的路径动画无效
+>         setLayerType(LAYER_TYPE_SOFTWARE,null);
 
 **常用方法**
 * public float getLength()：用于获取计算的路径长度，当forceClosed为true时，会当做Path是闭合的状态来计算路径长度
