@@ -51,3 +51,25 @@ public PathMeasure(Path path, boolean forceClosed) {
           tan如果不为null，返回采样的切线(x==[0]， y==[1])
           如果没有与该度量对象关联的路径，则返回false
 
+* public boolean getMatrix(float distance, Matrix matrix, int flags):
+
+         引脚距离为0 <= distance <= getLength()，然后计算对应的矩阵。
+         如果没有路径或长度为零，则返回false指定路径，此时矩阵不变。
+         @param distance 距离:沿关联路径的距离由调用方分配的
+         @param matrix 矩阵，设置为转换与指定距离的位置和切线相关联
+         @param flags 标志 指定应该在矩阵中返回哪些方面。
+         
+
+###### 2、SVG动画
+SVG:全称是Scalable Vector Graphics(可缩放矢量图形)，是专门用于网络是矢量图形标准。
+   与矢量图相对应的是位图，Bitmap就是位图。位图是，由一个个像素点组成，当图片放大到一定大小时，就会出现马赛克现象。
+   而矢量图则由一个个点组成，进过数学计算利用直线和曲线绘制而成，不会出现马赛克现象。
+* 可伸缩矢量图形
+* 定义用于网络的基于矢量的图形
+* 使用xml格式定义图形
+* 图片在放大或者改变尺寸的情况下其图形质量不会有所损失
+* 万维网联盟的标准
+* 与诸多DOM和XSL之类的W3C标准是一个整体
+
+**SVG与Bitmap(矢量图与位图比较)**
+* SVG

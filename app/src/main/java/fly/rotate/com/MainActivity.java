@@ -1,4 +1,4 @@
-package fly.rotate.com.customview;
+package fly.rotate.com;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import fly.rotate.com.animator.AnimatorPathMeasureExample;
+import fly.rotate.com.customview.R;
 import fly.rotate.com.customview.fivestar.SimpleFivePointedStar;
 import fly.rotate.com.customview.progressBar.CircleBarView;
 import layout.SelfViewAnimatorExample01;
